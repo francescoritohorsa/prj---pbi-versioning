@@ -1,0 +1,89 @@
+table Fact
+	lineageTag: e1da1db5-aa2d-4359-971c-21b935ccaae9
+
+	column prj_id
+		dataType: string
+		lineageTag: 3dc31b64-2a93-4d36-b965-09faadac94aa
+		summarizeBy: none
+		sourceColumn: prj_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column com_lvl1_id
+		dataType: string
+		lineageTag: e1ca2900-b2be-4b3b-aecc-da610d38232b
+		summarizeBy: none
+		sourceColumn: com_lvl1_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column com_lvl2_id
+		dataType: string
+		lineageTag: 28b570a9-930f-4c23-9595-13782e62d2e0
+		summarizeBy: none
+		sourceColumn: com_lvl2_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column com_lvl3_id
+		dataType: string
+		lineageTag: c58daa12-dbc4-4d16-82c8-4d36a6c7b886
+		summarizeBy: none
+		sourceColumn: com_lvl3_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pm_id
+		dataType: string
+		lineageTag: ec7fb8c5-d026-4014-9d2a-329f4e48a261
+		summarizeBy: none
+		sourceColumn: pm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsabile_id
+		dataType: string
+		lineageTag: e5dd6cfd-7a41-4954-acdb-d53dd9b6263d
+		summarizeBy: none
+		sourceColumn: responsabile_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'cdc_id (cost element group)'
+		dataType: string
+		lineageTag: bb26c0c2-6610-4b8f-9162-657f523b704f
+		summarizeBy: none
+		sourceColumn: cdc_id (cost element group)
+
+		annotation SummarizationSetBy = Automatic
+
+	column voci_bilancio_label
+		dataType: string
+		lineageTag: 83cd60ec-0435-4ecb-8e29-dd1f09878899
+		summarizeBy: none
+		sourceColumn: voci_bilancio_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column voci_bilancio_value
+		dataType: int64
+		formatString: 0
+		lineageTag: e9598336-c324-434c-82f7-fc3b2bab0b22
+		summarizeBy: sum
+		sourceColumn: voci_bilancio_value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\francesco.rito\Documents\tabella.xlsx"), null, true),
+				    Fact_Sheet = Source{[Item="Fact",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Fact_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"prj_id", type text}, {"com_lvl1_id", type text}, {"com_lvl2_id", type text}, {"com_lvl3_id", type text}, {"pm_id", type text}, {"responsabile_id", type text}, {"cdc_id (cost element group)", type text}, {"voci_bilancio_label", type text}, {"voci_bilancio_value", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
