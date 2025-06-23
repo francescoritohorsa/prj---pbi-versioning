@@ -5,4 +5,4 @@
 
 ## 📌 Descrizione
 
-Questa repository è stata creata per testare e documentare diverse tecniche di versionamento, tra cui:
+Questa repository è stata creata per testare e documentare diverse tecniche di versionamento
