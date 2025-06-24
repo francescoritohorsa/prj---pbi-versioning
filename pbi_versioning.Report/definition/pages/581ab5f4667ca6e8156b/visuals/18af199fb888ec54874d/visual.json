@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "18af199fb888ec54874d",
+  "position": {
+    "x": 472.04274778472006,
+    "y": 288.16563091509073,
+    "z": 0,
+    "height": 299.1433692356656,
+    "width": 462.437226754217
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact"
+                    }
+                  },
+                  "Property": "pm_id"
+                }
+              },
+              "queryRef": "Fact.pm_id",
+              "nativeQueryRef": "pm_id"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact"
+                        }
+                      },
+                      "Property": "voci_bilancio_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact.voci_bilancio_value)",
+              "nativeQueryRef": "Sum of voci_bilancio_value"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact"
+                      }
+                    },
+                    "Property": "voci_bilancio_value"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "610fab3fd18bb6714153",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact"
+              }
+            },
+            "Property": "pm_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4b8ee3d93562c73a0d04",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact"
+                  }
+                },
+                "Property": "voci_bilancio_value"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

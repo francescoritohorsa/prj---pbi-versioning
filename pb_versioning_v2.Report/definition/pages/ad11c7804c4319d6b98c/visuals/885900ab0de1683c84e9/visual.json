@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "885900ab0de1683c84e9",
+  "position": {
+    "x": 374.468085106383,
+    "y": 135.19756838905775,
+    "z": 0,
+    "height": 280.1215805471125,
+    "width": 280.1215805471125,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "treemap",
+    "query": {
+      "queryState": {
+        "Details": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact"
+                    }
+                  },
+                  "Property": "voci_bilancio_label"
+                }
+              },
+              "queryRef": "Fact.voci_bilancio_label",
+              "nativeQueryRef": "voci_bilancio_label"
+            }
+          ]
+        },
+        "Group": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact"
+                    }
+                  },
+                  "Property": "voci_bilancio_value"
+                }
+              },
+              "queryRef": "Fact.voci_bilancio_value",
+              "nativeQueryRef": "voci_bilancio_value",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact"
+                        }
+                      },
+                      "Property": "responsabile_id"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Fact.responsabile_id)",
+              "nativeQueryRef": "Count of responsabile_id"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a7869ec937c0e53880b5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact"
+              }
+            },
+            "Property": "voci_bilancio_value"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "23aed8390059768adb05",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact"
+              }
+            },
+            "Property": "voci_bilancio_label"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "91bb57bc357db187069b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact"
+                  }
+                },
+                "Property": "responsabile_id"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
