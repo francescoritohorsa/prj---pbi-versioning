@@ -1,0 +1,39 @@
+table Dim
+	lineageTag: 83bafcc1-4533-41d6-a72f-95c2ac3c4f9c
+
+	column Column1
+		dataType: string
+		lineageTag: ad38e8e6-0fc2-4e37-a3bf-1f80ff1f6d53
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column2
+		dataType: string
+		lineageTag: 65e49dec-649b-45e0-8c33-bf8887472f47
+		summarizeBy: none
+		sourceColumn: Column2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column3
+		dataType: string
+		lineageTag: 923d73d4-d889-48b9-8b4f-3163edbc21c3
+		summarizeBy: none
+		sourceColumn: Column3
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\francesco.rito\Documents\tabella.xlsx"), null, true),
+				    Dim_Sheet = Source{[Item="Dim",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Dim_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

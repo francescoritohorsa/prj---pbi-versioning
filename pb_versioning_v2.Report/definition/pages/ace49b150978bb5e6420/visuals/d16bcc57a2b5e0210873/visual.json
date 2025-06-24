@@ -10,7 +10,7 @@
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Y": {
@@ -85,7 +85,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3e80f5bc0606b84069d0",
+        "name": "345f3767e1805b300109",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -104,7 +104,7 @@
         "type": "Advanced"
       },
       {
-        "name": "d6e67ef0069885be7262",
+        "name": "91a785b03e30e80c903b",
         "field": {
           "Aggregation": {
             "Expression": {
