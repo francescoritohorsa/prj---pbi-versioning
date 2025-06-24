@@ -4,7 +4,7 @@
   "artifacts": [
     {
       "report": {
-        "path": "pbi_versioning.Report"
+        "path": "pbi_versioning_v2.Report"
       }
     }
   ],

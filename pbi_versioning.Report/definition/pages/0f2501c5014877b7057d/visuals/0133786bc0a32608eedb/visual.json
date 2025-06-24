@@ -1,18 +1,37 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "a92d85fcec3b090456c5",
+  "name": "0133786bc0a32608eedb",
   "position": {
     "x": 9.72644376899696,
-    "y": 84.620060790273556,
+    "y": 0,
     "z": 0,
-    "height": 635.13677811550156,
+    "height": 719.75683890577511,
     "width": 1270.2735562310031,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact"
+                    }
+                  },
+                  "Property": "voci_bilancio_label"
+                }
+              },
+              "queryRef": "Fact.voci_bilancio_label",
+              "nativeQueryRef": "voci_bilancio_label",
+              "active": true
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -28,30 +47,11 @@
                       "Property": "voci_bilancio_value"
                     }
                   },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Avg(Fact.voci_bilancio_value)",
-              "nativeQueryRef": "Average of voci_bilancio_value"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Fact"
-                        }
-                      },
-                      "Property": "voci_bilancio_value"
-                    }
-                  },
-                  "Function": 6
+                  "Function": 0
                 }
               },
               "queryRef": "Sum(Fact.voci_bilancio_value)",
-              "nativeQueryRef": "Median of voci_bilancio_value"
+              "nativeQueryRef": "voci_bilancio_value"
             }
           ]
         }
@@ -71,7 +71,7 @@
                     "Property": "voci_bilancio_value"
                   }
                 },
-                "Function": 1
+                "Function": 0
               }
             },
             "direction": "Descending"
@@ -80,54 +80,12 @@
         "isDefaultSort": true
       }
     },
-    "objects": {
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 4,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Avg(Fact.voci_bilancio_value)"
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 6,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(Fact.voci_bilancio_value)"
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "6d6ca17fad19e6c35e57",
+        "name": "0b58cadd3606843831eb",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -140,29 +98,24 @@
                 "Property": "voci_bilancio_value"
               }
             },
-            "Function": 1
+            "Function": 0
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "827e689d2c19a901785e",
+        "name": "379b343430010584e022",
         "field": {
-          "Aggregation": {
+          "Column": {
             "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Fact"
-                  }
-                },
-                "Property": "voci_bilancio_value"
+              "SourceRef": {
+                "Entity": "Fact"
               }
             },
-            "Function": 6
+            "Property": "voci_bilancio_label"
           }
         },
-        "type": "Advanced"
+        "type": "Categorical"
       }
     ]
   }
